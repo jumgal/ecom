@@ -1,0 +1,42 @@
+{
+  "name": "ecom",
+  "version": "1.0.0",
+  "description": "Ecom application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jumgal/ecom.git"
+  },
+  "keywords": [
+    "e-commerce",
+    "mern",
+    "react",
+    "redux",
+    "react-bootstrap",
+    "node",
+    "express"
+  ],
+  "author": "Jumgal Arymbaev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jumgal/ecom/issues"
+  },
+  "homepage": "https://github.com/jumgal/ecom#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "exxpress": "^1.0.0",
+    "mongoose": "^5.11.7"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.6"
+  }
+}

@@ -1,10 +1,21 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import Product from "../components/Product";
 
-import products from "../products";
+// import products from "../products";
 
 const HomeScreen = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/products")
+      .then((res) => {
+        res.json().then((r) => setProducts(r));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <Fragment>
       <h1>Latest Products</h1>

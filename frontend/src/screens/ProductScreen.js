@@ -1,18 +1,28 @@
-import React from "react";
-import products from "../products";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Image, ListGroup, Col, Row, Card, Button } from "react-bootstrap";
 
 import Rating from "../components/Rating";
 
 const ProductScreen = ({ match }) => {
-  const product = products.find((p) => (p._id = match.params.id));
+  const [product, setProduct] = useState({});
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/api/products/${match.params.id}`).then((res) =>
+      res
+        .json()
+        .then((r) => setProduct(r))
+
+        .catch((err) => console.log(err))
+    );
+  }, [match]);
+
+  // const product = products.find((p) => (p._id = match.params.id));
   return (
     <>
       <Link className="btn btn-light my-3" to="/">
         Go Back
       </Link>{" "}
-      ß
       <Row>
         <Col md={6}>
           <Image src={product.image} alt={product.name} fluid />
