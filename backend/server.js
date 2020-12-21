@@ -1,5 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
+const connectDB = require("./config/db");
+const colors = require("colors");
 
 const { json } = require("body-parser");
 var cors = require("cors");
@@ -7,6 +9,8 @@ var cors = require("cors");
 const products = require("./data/products");
 
 dotenv.config();
+
+connectDB();
 
 const app = express();
 
@@ -30,5 +34,7 @@ app.get("/api/products/:id", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running in ${process.env.NODE_ENV} on port ${PORT}`);
+  console.log(
+    `Server running in ${process.env.NODE_ENV} on port ${PORT}`.yellow.bold
+  );
 });
